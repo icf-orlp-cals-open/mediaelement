@@ -2942,36 +2942,39 @@ if (typeof jQuery != 'undefined') {
 					newHeight = parentHeight;
 				}
 
-				if (t.container.parent().length > 0 && t.container.parent()[0].tagName.toLowerCase() === 'body') { // && t.container.siblings().count == 0) {
-					parentWidth = $(window).width();
-					newHeight = $(window).height();
-				}
-
-				if ( newHeight && parentWidth ) {
-
-					// set outer container size
-					t.container
-						.width(parentWidth)
-						.height(newHeight);
-
-					// set native <video> or <audio> and shims
-					t.$media.add(t.container.find('.mejs-shim'))
-						.width('100%')
-						.height('100%');
-
-					// if shim is ready, send the size to the embeded plugin
-					if (t.isVideo) {
-						if (t.media.setVideoSize) {
-							t.media.setVideoSize(parentWidth, newHeight);
-						}
+				//IE 9 bug fix where parent is null sometimes - js
+				if (t.container.parent()[0]) {
+					if (t.container.parent().length > 0 && t.container.parent()[0].tagName.toLowerCase() === 'body') { // && t.container.siblings().count == 0) {
+						parentWidth = $(window).width();
+						newHeight = $(window).height();
 					}
 
-					// set the layers
-					t.layers.children('.mejs-layer')
-						.width('100%')
-						.height('100%');
-				}
+					if ( newHeight && parentWidth ) {
 
+						// set outer container size
+						t.container
+							.width(parentWidth)
+							.height(newHeight);
+
+						// set native <video> or <audio> and shims
+						t.$media.add(t.container.find('.mejs-shim'))
+							.width('100%')
+							.height('100%');
+
+						// if shim is ready, send the size to the embeded plugin
+						if (t.isVideo) {
+							if (t.media.setVideoSize) {
+								t.media.setVideoSize(parentWidth, newHeight);
+							}
+						}
+
+						// set the layers
+						t.layers.children('.mejs-layer')
+							.width('100%')
+							.height('100%');
+					}
+					
+				} //end IE bug fix conditional
 
 			} else {
 
