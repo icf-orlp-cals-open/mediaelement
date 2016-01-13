@@ -907,7 +907,7 @@
 							.width('100%')
 							.height('100%');
 					}
-					
+
 				} //end IE bug fix conditional
 
 			} else {

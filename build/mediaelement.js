@@ -12,6 +12,12 @@
  * License: MIT
  *
  */
+//add custom property to determine if video is playing
+Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
+  get: function(){
+      return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
+  }
+});
 // Namespace
 var mejs = mejs || {};
 
