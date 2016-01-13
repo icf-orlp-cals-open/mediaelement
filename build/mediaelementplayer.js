@@ -3741,7 +3741,7 @@ $.extend(mejs.MepDefaults,
 			player.sourcechooserButton =
 				$('<div class="mejs-button mejs-sourcechooser-button">'+
 					'<button type="button" aria-controls="' + t.id + '" title="' + t.options.sourcechooserText + '" aria-label="' + t.options.sourcechooserText + '"></button>'+
-					'<div class="mejs-sourcechooser-selector">'+
+					'<div class="mejs-sourcechooser-selector" style = "right: 0">'+
 						'<ul>'+
 						'</ul>'+
 					'</div>'+
@@ -3800,7 +3800,7 @@ $.extend(mejs.MepDefaults,
 			t.sourcechooserButton.find('ul').append(
 				$('<li>'+
 					'<input type="radio" name="' + t.id + '_sourcechooser" id="' + t.id + '_sourcechooser_' + label + type + '" value="' + src + '" ' + (isCurrent ? 'checked="checked"' : '') + ' />'+
-					'<label for="' + t.id + '_sourcechooser_' + label + type + '">' + label + ' (' + type + ')</label>'+
+					'<label for="' + t.id + '_sourcechooser_' + label + type + '">' + label + '</label>'+
 				'</li>')
 			);
 
